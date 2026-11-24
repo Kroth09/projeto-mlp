@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "configurable-mlp"
+version = "0.1.0"
+description = "MLP configurável implementada para fins acadêmicos"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy==2.5.5",
+    "pandas==3.1.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.2.0",
+]
+
+[project.scripts]
+mlp = "mlp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+

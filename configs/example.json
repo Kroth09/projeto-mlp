@@ -1,0 +1,56 @@
+{
+  "dataset": {
+    "path": "data/raw/dataset.csv",
+    "input_columns": [
+      "sementes_m2",
+      "nitrogenio_kg_ha"
+    ],
+    "output_columns": [
+      "produtividade_kg_ha"
+    ],
+    "delimiter": ",",
+    "encoding": "utf-8-sig"
+  },
+  "network": {
+    "input_size": 2,
+    "layers": [
+      {
+        "neurons": 8,
+        "activation": "tanh"
+      },
+      {
+        "neurons": 4,
+        "activation": "tanh"
+      },
+      {
+        "neurons": 1,
+        "activation": "linear"
+      }
+    ],
+    "seed": 42
+  },
+  "training": {
+    "epochs": 196,
+    "learning_rate": 0.01,
+    "shuffle_each_epoch": true,
+    "seed": 42
+  },
+  "split": {
+    "train": 70,
+    "validation": 15,
+    "test": 15,
+    "seed": 42,
+    "rounding": "remainder_to_test"
+  },
+  "normalization": {
+    "enabled": true,
+    "method": "zscore",
+    "fit_on": "train_only",
+    "zero_std_divisor": 1.0,
+    "normalize_outputs": false
+  },
+  "output": {
+    "model_path": "outputs/model.json",
+    "history_path": "outputs/training_history.csv"
+  }
+}
